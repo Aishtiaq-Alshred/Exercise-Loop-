@@ -44,10 +44,15 @@ public class Main {
         }
 
      // sol-2
-        System.out.println("Enter the string");
-        String word= input.nextLine();
-        StringBuilder reversed = new StringBuilder(word).reverse();
-        System.out.println("Reversed string: " + reversed.toString());
+        do {
+            System.out.println("Enter the string:");
+            String word = input.nextLine();
+
+            StringBuilder reversed = new StringBuilder(word).reverse();
+            System.out.println("Reversed string: " + reversed.toString());
+
+            System.out.println("Do you want to continue (yes/no)?");
+        } while (input.nextLine().equalsIgnoreCase("yes"));
 
      //sol-3
         System.out.println("Enter the number");
@@ -128,11 +133,21 @@ public class Main {
 
 
         //sol-8
+
         System.out.println("Enter a word: ");
-        String word2 = input.nextLine();
-        word2 = word2.toLowerCase();
-        String reversedWord = new StringBuilder(word2).reverse().toString();
-        if (word2.equals(reversedWord)) {
+        String word2 = input.nextLine().toLowerCase();
+        int left = 0;
+        int right = word2.length() - 1;
+        boolean isPalindrome = true;
+        while (left < right) {
+            if (word2.charAt(left) != word2.charAt(right)) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
+        }
+        if (isPalindrome) {
             System.out.println("The word is a palindrome");
         } else {
             System.out.println("The word is not a palindrome.");
